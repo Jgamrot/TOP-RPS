@@ -68,27 +68,141 @@ else is C = < 1 and P < 1 then draw
 
 
 */
-
-let playerSelection = 1
+/*
+let playerSelection = 3
 let computerChoice;
 
 function getComputerChoice(){
     return (Math.random()*3)
 }
+//computer choice
 computerChoice = Math.floor(getComputerChoice());
-
+//computer choice logs
 console.log(computerChoice);
+if (computerChoice > 1) {
+    console.log("Computer picks Rock");
+} else if (computerChoice === 1) {
+    console.log("Computer picks Paper");
+}else if (computerChoice <1) {
+    console.log("Computer picks Scissors");
+}
+//Rock >1
+// Paper = 1
+// Scissor < 1
 
+//checking who won is basically playing a round right?
 let result = function checkIfWinner () {
-if ((playerSelection => 1) && (computerChoice > 1)){
-    return ("draw")
-} else if ((playerSelection => 1) && (computerChoice === 1)){
-    return ("lose")
-} else if ((playerSelection => 1) && (computerChoice < 1)){
-    return ("win")
+    //playerSelection Rock
+if ((playerSelection > 1) && (computerChoice > 1)){
+    return ("so did you, it's a draw!")
+} else if ((playerSelection > 1) && (computerChoice === 1)){
+    return ("you lose")
+} else if ((playerSelection > 1) && (computerChoice < 1)){
+    return ("you win")
+    //playerSelection Paper
+} else if ((playerSelection === 1) && (computerChoice > 1)){
+    return ("you win")
+} else if ((playerSelection === 1) && (computerChoice === 1)){
+    return ("so did you, it's a draw!")
+} else if ((playerSelection === 1) && (computerChoice < 1)){
+    return ("you lose")
+    //playerSelection Scissors
+} else if ((playerSelection < 1) && (computerChoice > 1)){
+    return ("you lose")
+} else if ((playerSelection < 1) && (computerChoice === 1)){
+    return ("you win")
+} else if ((playerSelection < 1) && (computerChoice < 1)){
+    return ("so did you, it's a draw!")
 }
 }
 console.log(result());
 
+//Messing around trying to get the result in one log output
+
+console.log(computerChoice);
+if (computerChoice > 1) {
+    console.log("Computer picks Rock " + result());
+} else if (computerChoice === 1) {
+    console.log("Computer picks Paper " + result());
+}else if (computerChoice <1) {
+    console.log("Computer picks Scissors " + result());
+}
+*/
 
 
+
+//trying the code below
+
+function getComputerChoice(){
+    return (Math.random()*3)
+}
+
+function playRound(playerSelection, computerSelection) {
+
+    function getComputerChoice(){
+        return (Math.random()*3)
+    }
+    
+    computerSelection = Math.floor(getComputerChoice());
+
+    // console.log(computerSelection); this only logs the number
+    /* if (computerSelection > 1) {
+        console.log("Computer picks Rock");
+    } else if (computerSelection === 1) {
+        console.log("Computer picks Paper");
+    }else if (computerSelection <1) {
+        console.log("Computer picks Scissors");
+    } 
+    this displays what the item was the computer picked - not required*/
+ 
+    let result = function checkIfWinner () {
+        //playerSelection Rock
+    if ((playerSelection > 1) && (computerSelection > 1)){
+        return ("so did you, it's a draw!")
+    } else if ((playerSelection > 1) && (computerSelection === 1)){
+        return ("you lose")
+    } else if ((playerSelection > 1) && (computerSelection < 1)){
+        return ("you win")
+        //playerSelection Paper
+    } else if ((playerSelection === 1) && (computerSelection > 1)){
+        return ("you win")
+    } else if ((playerSelection === 1) && (computerSelection === 1)){
+        return ("so did you, it's a draw!")
+    } else if ((playerSelection === 1) && (computerSelection < 1)){
+        return ("you lose")
+        //playerSelection Scissors
+    } else if ((playerSelection < 1) && (computerSelection > 1)){
+        return ("you lose")
+    } else if ((playerSelection < 1) && (computerSelection === 1)){
+        return ("you win")
+    } else if ((playerSelection < 1) && (computerSelection < 1)){
+        return ("so did you, it's a draw!")
+    }
+    }
+    // console.log(result()); only says if the player wins or loses, not required
+    
+    //Messing around trying to get the result in one log output
+    
+   /* if (computerSelection > 1) {
+        console.log("Computer picks Rock " + result());
+    } else if (computerSelection === 1) {
+        console.log("Computer picks Paper " + result());
+    }else if (computerSelection <1) {
+        console.log("Computer picks Scissors " + result());
+    }
+    Not needed if I use returns instead */
+
+    if (computerSelection > 1) {
+        return ("Computer picks Rock " + result());
+    } else if (computerSelection === 1) {
+        return ("Computer picks Paper " + result());
+    }else if (computerSelection <1) {
+        return ("Computer picks Scissors " + result());
+    }
+  }
+  
+  const playerSelection = 1; //need to turn rock (any case) into a number
+  const computerSelection = Math.floor(getComputerChoice());
+
+  console.log(playRound(playerSelection, computerSelection));
+  
