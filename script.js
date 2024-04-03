@@ -70,16 +70,14 @@ else is C = < 1 and P < 1 then draw
 */
 
 let playerSelection = 1
-let computerChoice = 0.4;
+let computerChoice;
 
-  computerChoice = (function randomNumber(){
-    return (Math.random()*4)
-})
-//need to make this an int 0, 1 or 2. a floating point will almost never be exactly 1.
-console.log(computerChoice());
-//I think I need the randomNumber to be store to a var once the function is called. 
-//Then I want to display that.
-//then check if that beats the player selection
+function getComputerChoice(){
+    return (Math.random()*3)
+}
+computerChoice = Math.floor(getComputerChoice());
+
+console.log(computerChoice);
 
 let result = function checkIfWinner () {
 if ((playerSelection => 1) && (computerChoice > 1)){
@@ -91,7 +89,6 @@ if ((playerSelection => 1) && (computerChoice > 1)){
 }
 }
 console.log(result());
-//I know this bit works, if I can get the random number bit to work
 
 
 
