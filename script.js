@@ -5,11 +5,9 @@
 let playerScore = 0;
 let computerScore = 0;
 
-for (let i = 0; i <5; i++){
 
-function getComputerChoice(){
-    return (Math.random()*3)
-}
+const buttons = document.querySelectorAll("button"); // node list for buttons
+
 
 function getPlayerChoice(playerValue){
     if (playerValue === "rock") {
@@ -21,15 +19,12 @@ function getPlayerChoice(playerValue){
     }
 }
 
-function playRound(playerValue, computerSelection) {
+function getComputerChoice(){
+    return Math.floor(Math.random() * 3);
+}
 
-    function getComputerChoice(){
-        return (Math.random()*3)
-    }
-    
-    computerSelection = Math.floor(getComputerChoice());
 
-    let result = function checkIfWinner () {
+function checkIfWinner (playerValue, computerSelection) {
         //playerValue Rock
     if ((playerValue > 1) && (computerSelection > 1)){
         return ("so did you, it's a draw!")
@@ -56,25 +51,32 @@ function playRound(playerValue, computerSelection) {
         playerScore++
         return ("you win")
     } else if ((playerValue < 1) && (computerSelection < 1)){
-        return ("so did you, it's a draw!")
+        return ("so did you, it's a draw!") 
     }
     }
     
-    if (computerSelection > 1) {
-        return ("Computer picks Rock " + result());
-    } else if (computerSelection === 1) {
-        return ("Computer picks Paper " + result());
-    }else if (computerSelection <1) {
-        return ("Computer picks Scissors " + result());
+function playRound(playerValue, computerSelection) {
+    const result = checkIfWinner(playerValue, computerSelection);
+        if (computerSelection > 1) {
+            return ("Computer picks Rock " + result);
+        } else if (computerSelection === 1) {
+            return ("Computer picks Paper " + result);
+        }else if (computerSelection <1) {
+            return ("Computer picks Scissors " + result);
+        }
     }
-}
 
-  const playerValue = prompt("Rock, paper or scissors?").toLowerCase();
-  const playerSelection = getPlayerChoice(playerValue);
-  const computerSelection = Math.floor(getComputerChoice());
 
-  console.log(playRound(playerSelection, computerSelection));
-}
+buttons.forEach((button) => {
+    button.addEventListener("click", () => { //tell it to playROund within the arrow function
+        let playerValue = getPlayerChoice(button.id);
+        let computerSelection = getComputerChoice();
+        let roundResult = playRound(playerValue, computerSelection);
+        console.log(roundResult);
+    });
+});
+
+/*
 
 if (playerScore > computerScore) {
     console.log("You win the best of 5!");
@@ -83,3 +85,4 @@ if (playerScore > computerScore) {
   } else {
     console.log("It's a draw in the best of 5!");
   }
+  */
