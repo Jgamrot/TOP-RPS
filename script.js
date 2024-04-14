@@ -1,7 +1,3 @@
-// Rock 2
-// Paper 1
-// Scissors 0
-
 let playerScore = 0;
 let computerScore = 0;
 
@@ -9,6 +5,13 @@ let computerScore = 0;
 const buttons = document.querySelectorAll("button"); // node list for buttons
 
 const displayResults = document.getElementById("resultsDiv");
+
+const displayPlayerScore = document.getElementById("playerScore");
+const displayComputerScore = document.getElementById("computerScore");
+
+
+const displayWinner = document.getElementById("gameOver");
+
 
 function getPlayerChoice(playerValue){
     if (playerValue === "rock") {
@@ -75,16 +78,13 @@ buttons.forEach((button) => {
         let roundResult = playRound(playerValue, computerSelection);
         console.log(roundResult);
         displayResults.textContent = roundResult;
+        displayPlayerScore.textContent = "Player Score: " + playerScore;
+        displayComputerScore.textContent = "Computer Score: " +  computerScore;
+
+        if (playerScore === 5) {
+            displayWinner.textContent = "First to 5 points! You Win!";
+        } else if (computerScore === 5) {
+            displayWinner.textContent = "The computer got to 5 points before you. You Lose!";
+        }
     });
 });
-
-/*
-
-if (playerScore > computerScore) {
-    console.log("You win the best of 5!");
-  } else if (playerScore < computerScore) {
-    console.log("Computer wins the best of 5!");
-  } else {
-    console.log("It's a draw in the best of 5!");
-  }
-  */
