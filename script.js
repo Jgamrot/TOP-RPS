@@ -8,6 +8,7 @@ let computerScore = 0;
 
 const buttons = document.querySelectorAll("button"); // node list for buttons
 
+const displayResults = document.getElementById("resultsDiv");
 
 function getPlayerChoice(playerValue){
     if (playerValue === "rock") {
@@ -73,6 +74,7 @@ buttons.forEach((button) => {
         let computerSelection = getComputerChoice();
         let roundResult = playRound(playerValue, computerSelection);
         console.log(roundResult);
+        displayResults.textContent = roundResult;
     });
 });
 
